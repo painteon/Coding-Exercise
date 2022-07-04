@@ -1,24 +1,24 @@
-*{
+* {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
 
-.color{
+.color {
   color: #F2F2F2, #F32424, #9772FB, #764AF1;
 }
 
-body{
+body {
   background-color: #F2F2F2;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: flex-end;
   margin-right: 10%;
   padding: 6% 3%;
 }
 
-button{
+button {
   padding: 2%;
   width: 100px;
   height: 50px;
@@ -29,45 +29,46 @@ button{
   background-color: white;
 }
 
-button:hover{
+button:hover {
   border: 2px solid #F32424;
 }
 
-button:active{
+button:active {
   border: 2px solid #764AF1;
   background-color: #F32424;
 }
 
-.schedule-button{
+.schedule-button {
   width: 70px;
   padding-left: 8px;
 }
-.nav-form{
+
+.nav-form {
   display: inline-block;
   margin: auto 1%;
 }
 
-.title{
+.title {
   font-size: 350%;
   text-decoration: underline solid #764AF1 7px;
 }
 
-.schedule_title{
+.schedule_title {
   font-size: 100%;
   text-decoration: underline solid #764AF1 2px;
 }
 
-.schedule-paragraph{
+.schedule-paragraph {
   display: inline-block;
 }
 
-.schedule-container{
+.schedule-container {
   display: flex;
   justify-content: space-around;
   margin-bottom: 10%;
 }
 
-.form-box{
+.form-box {
   width: 40%;
   border-radius: 20px;
   border: 2px solid #764AF1;
@@ -78,14 +79,21 @@ button:active{
   height: 300px;
 }
 
-.form-box-find{
+.form-box-find {
   height: auto;
   min-height: 300px;
   width: 600px;
   min-width: 60%;
 }
 
-.schedule-box{
+.form-box-find-2 {
+  height: auto;
+  min-height: 300px;
+  width: 700px;
+  min-width: 60%;
+}
+
+.schedule-box {
   padding: 1% 2%;
   height: auto;
   min-height: 300px;
@@ -94,7 +102,7 @@ button:active{
   min-width: 600px;
 }
 
-.form-child{
+.form-child {
   margin: 2%;
   border: 2px solid #9772FB;
   border-radius: 10px;
@@ -103,31 +111,41 @@ button:active{
   box-sizing: border-box;
 }
 
-.form-child:focus{
+.form-child:focus {
   border: 3px solid #764AF1;
   outline-color: #764AF1;
 }
 
-.form-child:hover{
+.form-child:hover {
   border: 3px solid #764AF1;
 }
 
-.submit-button{
+.submit-button {
   margin-top: 50px;
 }
 
-.find-button{
+.find-button {
   padding-top: 0.5%;
   padding-left: 1.7%;
 }
 
-.table{
-  margin: auto;
+.table {
+  margin: auto 0;
   margin-top: 5%;
   overflow: scroll;
 }
 
-.table-row{
+.resize {
+  width: 800px;
+}
+
+.move-left {
+  position: absolute;
+  top: 425px;
+  right: 550px;
+}
+
+.table-row {
   padding: 2% 0;
   width: 20%;
   box-sizing: border-box;

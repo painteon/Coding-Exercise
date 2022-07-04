@@ -115,36 +115,55 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
             return `<td><input type="checkbox" id="current" name="current"></td>`
           }
         }
+        if (req.body.findByID.length !== 24 || undefined){
+          res.redirect('/')
+        }
+
         res.send(`
-          <form class="nav-form" action="/find" method="get">
-            <button type="submit" name="Find">Find Employee</button>
+          <!DOCTYPE html>
+          <html lang="en" dir="ltr">
+
+          <head>
+            <meta charset="utf-8">
+            <title>Payroll</title>
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="/css/styles.css">
+          </head>
+
+          <body>
+          <h1 class="title">Employee</h1>
+          <form class="move - left" action="/find" method="get">
+          <button class="find-button" type="submit" formaction="/find" name="Find">Find Employee</button>
           </form>
-          <form class="nav-form" action="/update" method="post">
-          <table>
+          <form class="form-box form-box-find resize" action="/update" method="post">
+          <table class="table">
           <tr>
-            <th>ID</th>
-            <th>name</th>
-            <th>current</th>
-            <th>Hourly Pay</th>
-            <th>Weekly Hours</th>
-            <th>Raw Wage</th>
-            <th>Net Wage</th>
-            <th>Tax</th>
+            <th class="table-row">ID</th>
+            <th class="table-row">name</th>
+            <th class="table-row">current</th>
+            <th class="table-row">Hourly Pay</th>
+            <th class="table-row">Weekly Hours</th>
+            <th class="table-row">Raw Wage</th>
+            <th class="table-row">Net Wage</th>
+            <th class="table-row">Tax</th>
           </tr>
           <tr>
-            <td><input type="text" id="id" name="id" readonly value= "${employee._id}"></td>
-            <td><input type="text" id="name" name="name" value= "${employee.name}"></td>
+            <td class="table-row"><input class="form-child" type="text" id="id" name="id" readonly value= "${employee._id}"></td>
+            <td class="table-row"><input class="form-child" type="text" id="name" name="name" value= "${employee.name}"></td>
             ${current()}
-            <td><input type="checkbox" id="current" name="current"></td>
-            <td><input type="text" id="hourlyPay" name="hourlyPay" value="${employee.hourlyPay}"></td>
-            <td><input type="text" id="weeklyHours" name="weeklyHours" value="${employee.weeklyHours}"></td>
-            <td>${employee.rawWage}</td>
-            <td>${employee.netWage}</td>
-            <td>${employee.tax}</td>
+            <td class="table-row"><input class="form-child" type="text" id="hourlyPay" name="hourlyPay" value="${employee.hourlyPay}"></td>
+            <td class="table-row"><input class="form-child" type="text" id="weeklyHours" name="weeklyHours" value="${employee.weeklyHours}"></td>
+            <td class="table-row">${employee.rawWage}</td>
+            <td class="table-row">${employee.netWage}</td>
+            <td class="table-row">${employee.taxes}</td>
+
           </tr>
         </table>
-          <button type="submit" name="Update">Update Employee</button>
+          <button class="nav-form find-button" type="submit" name="Update">Update Employee</button>
         </form>
+        </body>
+
+        </html>
         `) //Creates another window for the user to see the weekly information for a single employee
       }
     })

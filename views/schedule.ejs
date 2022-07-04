@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Payroll</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
-  <body>
-    <nav>
-      <form class="nav-form" action="/" method="get">
-        <button type="submit" name="Add">Add Employee</button>
-      </form>
-      <form class="nav-form" action="/find" method="get">
-        <button type="submit" name="Find">Find Employee</button>
-      </form>
-    </nav>
-    <h1 class="title">Schedule</h1>
-    <form class="form-box schedule-box" action="/schedule" method="post">
-      <form class="" action="/delSchedule" method="post">
-    <div class="">
-      <h1 class="schedule_title">Monday</h1>
-      <div class="schedule-container">
-        <input style="display:none" type="text" name="day" value="Monday">
+
+<head>
+  <meta charset="utf-8">
+  <title>Payroll</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <nav>
+    <form class="nav-form" action="/" method="get">
+      <button type="submit" name="Add">Add Employee</button>
+    </form>
+    <form class="nav-form" action="/find" method="get">
+      <button type="submit" name="Find">Find Employee</button>
+    </form>
+  </nav>
+  <h1 class="title">Schedule</h1>
+  <form class="form-box schedule-box" action="/schedule" method="post">
+    <form class="" action="/delSchedule" method="post">
+      <div class="">
+        <h1 class="schedule_title">Monday</h1>
+        <div class="schedule-container">
+          <input style="display:none" type="text" name="day" value="Monday">
           <% log.forEach(function(logged){ %>
           <%  if(logged.day === "Monday"){ %>
+          <div class="">
             <div class="">
-              <div class="">
-                <input style="display:none" type="text" name="Id" value= "<%= logged._id %>">
-                <p class="schedule-paragraph">Name: <%= logged.name %></p><p>Start time: <%= logged.time %></p><p>weekly Hours: <%= logged.weeklyHours %></p>
-              </div>
-              <div class="">
-                <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
-              </div>
+              <input style="display:none" type="text" name="Id" value="<%= logged._id %>">
+              <p class="schedule-paragraph">Name: <%= logged.name %></p>
+              <p>Start time: <%= logged.time %></p>
+              <p>weekly Hours: <%= logged.weeklyHours %></p>
             </div>
+            <div class="">
+              <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
+            </div>
+          </div>
           <% } %>
           <% })%>
-          </div>
+        </div>
         <label for="Value">Employee Id</label>
         <input class="form-child" type="text" name="schedule">
         <label for="time">Time</label>
@@ -45,25 +49,27 @@
         </div>
       </div>
     </form>
-    </form>
-    <form class="form-box schedule-box" action="/schedule" method="post">
-      <form class="" action="/delSchedule" method="post">
+  </form>
+  <form class="form-box schedule-box" action="/schedule" method="post">
+    <form class="" action="/delSchedule" method="post">
       <div class="">
         <h1 class="schedule_title">Tuesday</h1>
         <input style="display:none" type="text" name="day" value="Tuesday">
-          <% log.forEach(function(logged){ %>
-          <%  if(logged.day === "Tuesday"){ %>
-            <div class="">
-              <div class="">
-                <input style="display:none" type="text" name="Id" value= "<%= logged._id %>">
-                <p class="schedule-paragraph">Name: <%= logged.name %></p><p>Start time: <%= logged.time %></p><p>weekly Hours: <%= logged.weeklyHours %></p>
-              </div>
-              <div class="">
-                <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
-              </div>
-            </div>
-          <% } %>
-          <% })%>
+        <% log.forEach(function(logged){ %>
+        <%  if(logged.day === "Tuesday"){ %>
+        <div class="">
+          <div class="">
+            <input style="display:none" type="text" name="Id" value="<%= logged._id %>">
+            <p class="schedule-paragraph">Name: <%= logged.name %></p>
+            <p>Start time: <%= logged.time %></p>
+            <p>weekly Hours: <%= logged.weeklyHours %></p>
+          </div>
+          <div class="">
+            <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
+          </div>
+        </div>
+        <% } %>
+        <% })%>
         <label for="Value">Employee Id</label>
         <input class="form-child" type="text" id="Value" name="schedule">
         <label for="time">Time</label>
@@ -73,25 +79,27 @@
         </div>
       </div>
     </form>
-    </form>
-    <form class="form-box schedule-box" action="/schedule" method="post">
-      <form class="" action="/delSchedule" method="post">
+  </form>
+  <form class="form-box schedule-box" action="/schedule" method="post">
+    <form class="" action="/delSchedule" method="post">
       <div class="">
         <h1 class="schedule_title">Wednesday</h1>
         <input style="display:none" type="text" name="day" value="Wednesday">
-          <% log.forEach(function(logged){ %>
-          <%  if(logged.day === "Wednesday"){ %>
-            <div class="">
-              <div class="">
-                <input style="display:none" type="text" name="Id" value= "<%= logged._id %>">
-                <p class="schedule-paragraph">Name: <%= logged.name %></p><p>Start time: <%= logged.time %></p><p>weekly Hours: <%= logged.weeklyHours %></p>
-              </div>
-              <div class="">
-                <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
-              </div>
-            </div>
-          <% } %>
-          <% })%>
+        <% log.forEach(function(logged){ %>
+        <%  if(logged.day === "Wednesday"){ %>
+        <div class="">
+          <div class="">
+            <input style="display:none" type="text" name="Id" value="<%= logged._id %>">
+            <p class="schedule-paragraph">Name: <%= logged.name %></p>
+            <p>Start time: <%= logged.time %></p>
+            <p>weekly Hours: <%= logged.weeklyHours %></p>
+          </div>
+          <div class="">
+            <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
+          </div>
+        </div>
+        <% } %>
+        <% })%>
         <label for="Value">Employee Id</label>
         <input class="form-child" type="text" id="Value" name="schedule">
         <label for="time">Time</label>
@@ -101,23 +109,25 @@
         </div>
       </div>
     </form>
-    </form>
-    <form class="form-box schedule-box" action="/schedule" method="post">
-      <form class="" action="/delSchedule" method="post">
+  </form>
+  <form class="form-box schedule-box" action="/schedule" method="post">
+    <form class="" action="/delSchedule" method="post">
       <div class="">
         <h1 class="schedule_title">Thursday</h1>
         <input style="display:none" type="text" name="day" value="Thursday">
         <% log.forEach(function(logged){ %>
         <%  if(logged.day === "Thursday"){ %>
+        <div class="">
           <div class="">
-            <div class="">
-              <input style="display:none" type="text" name="Id" value= "<%= logged._id %>">
-              <p class="schedule-paragraph">Name: <%= logged.name %></p><p>Start time: <%= logged.time %></p><p>weekly Hours: <%= logged.weeklyHours %></p>
-            </div>
-            <div class="">
-              <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
-            </div>
+            <input style="display:none" type="text" name="Id" value="<%= logged._id %>">
+            <p class="schedule-paragraph">Name: <%= logged.name %></p>
+            <p>Start time: <%= logged.time %></p>
+            <p>weekly Hours: <%= logged.weeklyHours %></p>
           </div>
+          <div class="">
+            <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
+          </div>
+        </div>
         <% } %>
         <% })%>
         <label for="Value">Employee Id</label>
@@ -129,34 +139,37 @@
         </div>
       </div>
     </form>
-    </form>
-    <form class="form-box schedule-box" action="/schedule" method="post">
-      <form class="" action="/delSchedule" method="post">
+  </form>
+  <form class="form-box schedule-box" action="/schedule" method="post">
+    <form class="" action="/delSchedule" method="post">
       <div class="">
         <h1 class="schedule_title">Friday</h1>
         <input style="display:none" type="text" name="day" value="Friday">
         <% log.forEach(function(logged){ %>
         <%  if(logged.day === "Friday"){ %>
+        <div class="">
           <div class="">
-            <div class="">
-              <input style="display:none" type="text" name="Id" value= "<%= logged._id %>">
-              <p class="schedule-paragraph">Name: <%= logged.name %></p><p>Start time: <%= logged.time %></p><p>weekly Hours: <%= logged.weeklyHours %></p>
-            </div>
-            <div class="">
-              <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
-            </div>
+            <input style="display:none" type="text" name="Id" value="<%= logged._id %>">
+            <p class="schedule-paragraph">Name: <%= logged.name %></p>
+            <p>Start time: <%= logged.time %></p>
+            <p>weekly Hours: <%= logged.weeklyHours %></p>
           </div>
+          <div class="">
+            <button class="schedule-button" type="submit" name="button" formaction="/delSchedule">Remove</button>
+          </div>
+        </div>
         <% } %>
         <% })%>
         <label for="Value">Employee Id</label>
         <input class="form-child" type="text" id="Value" name="schedule">
         <label for="time">Time</label>
-        <input class="form-child" type="text"id="time" name="time">
+        <input class="form-child" type="text" id="time" name="time">
         <div class="">
           <button type="submit" name="button">Add</button>
         </div>
       </div>
     </form>
-    </form>
-  </body>
+  </form>
+</body>
+
 </html>
