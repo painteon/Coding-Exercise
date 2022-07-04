@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Payroll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <nav>
+      <form class="nav-form" action="/" method="get">
+        <button type="submit" name="Add">Add Employee</button>
+      </form>
+      <form class="nav-form" action="/find" method="get">
+        <button type="submit" name="Find">Find Employee</button>
+      </form>
+    </nav>
+    <h1 class="title">Delete</h1>
+    <form class="nav-form" action="/delete" method="post">
+      <label for="Value">Employee Id</label>
+      <input class="form-child" type="text" id="Value" name="delete"> <br>
+      <button class="submit-button" type="submit" name="button">Delete</button>
+    </form>
+  </body>
+</html>

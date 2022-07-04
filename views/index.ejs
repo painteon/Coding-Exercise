@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Payroll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <nav>
+      <form class="nav-form" action="/" method="get">
+        <button type="submit" name="Add">Add Employee</button>
+      </form>
+      <form class="nav-form" action="/find" method="get">
+        <button type="submit" name="Find">Find Employee</button>
+      </form>
+      <form class="nav-form" action="/delete" method="get">
+        <button type="submit" name="Delete">Delete Employee</button>
+      </form>
+      <form class="nav-form" action="/schedule" method="get">
+        <button type="submit" name="schedule">Schedule</button>
+      </form>
+    </nav>
+    <h1 class="title">Payroll</h1>
+    <form class="form-box" action="/" method="post">
+      <label for="name">Name</label>
+      <input class="form-child" type="text" id="name" name="name"> <br>
+      <label for="current">Current</label>
+      <input class="form-child" type="checkbox" id="current" name="current"> <br>
+      <label for="weeklyHours">Weekly Hours</label>
+      <input class="form-child" type="text" id="weeklyHours" name="weeklyHours"> <br>
+      <label for="hourlyPay">Hourly Pay</label>
+      <input class="form-child" type="text" id="hourlyPay" name="hourlyPay"> <br>
+      <button class="submit-button" type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Payroll</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <nav>
+    <form class="nav-form" action="/" method="get">
+      <button type="submit" name="Add">Add Employee</button>
+    </form>
+    <form class="nav-form" action="/find" method="get">
+      <button type="submit" name="Find">Find Employee</button>
+    </form>
+    <form class="nav-form" action="/delete" method="get">
+      <button type="submit" name="Delete">Delete Employee</button>
+    </form>
+    <form class="nav-form" action="/schedule" method="get">
+      <button type="submit" name="schedule">Schedule</button>
+    </form>
+  </nav>
+  <h1 class="title">Payroll</h1>
+  <form class="form-box form-box-find" action="/find" method="post">
+    <label for="findByID">Employee Id</label>
+    <input class="form-child" type="text" id="findByID" name="findByID"> <br>
+    <button class="submit-button find-button" type="submit" name="button">Find/Find All</button>
+    <table class="table">
+      <tr>
+        <th class="table-row">ID</th>
+        <th class="table-row">Name</th>
+        <th class="table-row">Current</th>
+        <th class="table-row">Hourly Pay</th>
+        <th class="table-row">Weekly Hours</th>
+        <th class="table-row">Raw Wage</th>
+        <th class="table-row">Net Wage</th>
+        <th class="table-row">Tax</th>
+      </tr>
+      <% employees.forEach(function(employee){ %>
+      <tr>
+        <% for(let x = 0; x < (Object.values(employee).length - 1); x++) {%>
+        <td class="table-row"><%= Object.values(employee)[x] %></td>
+        <% } %>
+      </tr>
+      <% }) %>
+    </table>
+  </form>
+</body>
+
+</html>
