@@ -96,7 +96,7 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
     Employee.find(function(err, employees) {
       if (err) { // if err is found its logged in the console and the page is refreshed
         console.log(err)
-        res.redirect('/find')
+        return res.redirect('/find')
       } else { // else the workers variable is updated for the find route get request render
         res.redirect('/find')
         return workers = employees;
@@ -106,7 +106,7 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
     Employee.findById(req.body.findByID, function(err, employee) {
       if (err) { // another check to assure that the values passed are indeed valid
         console.log(err)
-        res.redirect('/find')
+        return res.redirect('/find')
       } else {
         function current (){ //a function to check the state of the current checkbox field
           if(employee.current){
@@ -115,56 +115,62 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
             return `<td><input type="checkbox" id="current" name="current"></td>`
           }
         }
-        if (req.body.findByID.length !== 24 || undefined){
-          res.redirect('/')
+
+        if (req.body.findByID || employee === undefined || null){
+          return res.redirect('/find')
+        }else{
+          if (req.body.findByID.length !== 24){
+            return res.redirect('/find')
+          }else{
+            res.send(`
+              <!DOCTYPE html>
+              <html lang="en" dir="ltr">
+
+              <head>
+                <meta charset="utf-8">
+                <title>Payroll</title>
+                <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="/css/styles.css">
+              </head>
+
+              <body>
+              <h1 class="title">Employee</h1>
+              <form class="move - left" action="/find" method="get">
+              <button class="find-button move-left" type="submit" formaction="/find" name="Find">Find Employee</button>
+              </form>
+              <form class="form-box form-box-find resize" action="/update" method="post">
+              <table class="table">
+              <tr>
+                <th class="table-row">ID</th>
+                <th class="table-row">name</th>
+                <th class="table-row">current</th>
+                <th class="table-row">Hourly Pay</th>
+                <th class="table-row">Weekly Hours</th>
+                <th class="table-row">Raw Wage</th>
+                <th class="table-row">Net Wage</th>
+                <th class="table-row">Tax</th>
+              </tr>
+              <tr>
+                <td class="table-row"><input class="form-child" type="text" id="id" name="id" readonly value= "${employee._id}"></td>
+                <td class="table-row"><input class="form-child" type="text" id="name" name="name" value= "${employee.name}"></td>
+                ${current()}
+                <td class="table-row"><input class="form-child" type="text" id="hourlyPay" name="hourlyPay" value="${employee.hourlyPay}"></td>
+                <td class="table-row"><input class="form-child" type="text" id="weeklyHours" name="weeklyHours" value="${employee.weeklyHours}"></td>
+                <td class="table-row">${employee.rawWage}</td>
+                <td class="table-row">${employee.netWage}</td>
+                <td class="table-row">${employee.taxes}</td>
+
+              </tr>
+            </table>
+              <button class="nav-form find-button" type="submit" name="Update">Update Employee</button>
+            </form>
+            </body>
+
+            </html>
+            `) //Creates another window for the user to see the weekly information for a single employee
+          }
         }
 
-        res.send(`
-          <!DOCTYPE html>
-          <html lang="en" dir="ltr">
-
-          <head>
-            <meta charset="utf-8">
-            <title>Payroll</title>
-            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oswald&family=Redressed&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="/css/styles.css">
-          </head>
-
-          <body>
-          <h1 class="title">Employee</h1>
-          <form class="move - left" action="/find" method="get">
-          <button class="find-button" type="submit" formaction="/find" name="Find">Find Employee</button>
-          </form>
-          <form class="form-box form-box-find resize" action="/update" method="post">
-          <table class="table">
-          <tr>
-            <th class="table-row">ID</th>
-            <th class="table-row">name</th>
-            <th class="table-row">current</th>
-            <th class="table-row">Hourly Pay</th>
-            <th class="table-row">Weekly Hours</th>
-            <th class="table-row">Raw Wage</th>
-            <th class="table-row">Net Wage</th>
-            <th class="table-row">Tax</th>
-          </tr>
-          <tr>
-            <td class="table-row"><input class="form-child" type="text" id="id" name="id" readonly value= "${employee._id}"></td>
-            <td class="table-row"><input class="form-child" type="text" id="name" name="name" value= "${employee.name}"></td>
-            ${current()}
-            <td class="table-row"><input class="form-child" type="text" id="hourlyPay" name="hourlyPay" value="${employee.hourlyPay}"></td>
-            <td class="table-row"><input class="form-child" type="text" id="weeklyHours" name="weeklyHours" value="${employee.weeklyHours}"></td>
-            <td class="table-row">${employee.rawWage}</td>
-            <td class="table-row">${employee.netWage}</td>
-            <td class="table-row">${employee.taxes}</td>
-
-          </tr>
-        </table>
-          <button class="nav-form find-button" type="submit" name="Update">Update Employee</button>
-        </form>
-        </body>
-
-        </html>
-        `) //Creates another window for the user to see the weekly information for a single employee
       }
     })
   }
@@ -192,7 +198,7 @@ app.post("/update", function(req, res) { //The route used to update the employee
     function(err) { //checks for errors in the process of updating and refreshes the page after it is logged to the console
       if (err) {
         console.log(err);
-        res.redirect("/find");
+        return res.redirect("/find");
       } else {
         Employee.find(function(err, employees) { //updates the workers variable for the next get request when the next redirect is called
           if (err) {
@@ -216,7 +222,7 @@ app.post("/delete", function(req, res) { //handles the post request for deletion
   }, function(err) { // handles any error that comes through by logging the error and redirecting back to the finding route
     if (err) {
       console.log(err);
-      res.redirect("/find")
+      return res.redirect("/find")
     } else {
       Employee.find(function(err, employees) { //updates the workers variable to have the latests data once the redirect is called
         if (err) {
@@ -247,7 +253,7 @@ app.post('/schedule', function(req, res){ //handles the requests to update the s
   Employee.find({_id: req.body.schedule}, function(err, employee) { //Uses information from the employee collection to fill out the schedule collection
     if (err) {
       console.log(err)
-      res.redirect('/schedule')
+      return res.redirect('/schedule')
     } else {
       const schedule = new Schedule({ //a single instance of the schedule document
         name: employee[0].name,
@@ -269,7 +275,7 @@ app.post('/delSchedule', function(req, res){ //handles the deletion of the sched
   Schedule.deleteOne({_id: req.body.Id}, function(err, employee) {
     if (err) {
       console.log(err)
-      res.redirect('/schedule')
+      return res.redirect('/schedule')
     } else {
       Schedule.find({}, function(workSchedule){
           res.redirect('/schedule')
