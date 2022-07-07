@@ -80,6 +80,9 @@ app.post("/", function(req, res, err) { // Catches the form data from the home p
   }).lean()
 
   employee.save(); // saves the employee information into the employee collection
+  Employee.find(function(err, employees) {
+      return workers = employees;
+  }).lean() //.lean() stops mongoose from converting the database objects into its specialized objects
   res.redirect("/");
 })
 

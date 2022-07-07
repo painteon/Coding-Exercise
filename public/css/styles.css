@@ -141,8 +141,8 @@ button:active {
 
 .move-left {
   position: absolute;
-  top: 425px;
-  right: 550px;
+  top: 60vh;
+  right: 37vw;
 }
 
 .table-row {
