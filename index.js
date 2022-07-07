@@ -119,7 +119,7 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
           }
         }
 
-        if (req.body.findByID || employee === undefined || null){
+        if (req.body.findByID === undefined || null){
           return res.redirect('/find')
         }else{
           if (req.body.findByID.length !== 24){
