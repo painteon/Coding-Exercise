@@ -47,6 +47,10 @@ let workers = [''];
 
 let scheduleLog = [''];
 
+Employee.find(function(err, employees) {
+    return workers = employees;
+  }).lean()
+
 //Beginning of the routes
 
 app.get("/", function(req, res) {
@@ -119,12 +123,9 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
           }
         }
 
-        if (req.body.findByID === undefined || null){
+        if (employee === null){
           return res.redirect('/find')
         }else{
-          if (req.body.findByID.length !== 24){
-            return res.redirect('/find')
-          }else{
             res.send(`
               <!DOCTYPE html>
               <html lang="en" dir="ltr">
@@ -171,7 +172,7 @@ app.post("/find", function(req, res) { //handles all post requests to the find r
 
             </html>
             `) //Creates another window for the user to see the weekly information for a single employee
-          }
+
         }
 
       }
